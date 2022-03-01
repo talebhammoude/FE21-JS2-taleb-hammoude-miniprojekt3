@@ -8,3 +8,17 @@ firebase.initializeApp({
   var db = firebase.firestore();
 
 
+
+  function readFromDb() {
+
+    db.collection("products").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+        });
+    });
+
+  }
+
+
+  readFromDb();
+
