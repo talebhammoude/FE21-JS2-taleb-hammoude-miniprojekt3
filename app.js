@@ -9,16 +9,30 @@ firebase.initializeApp({
 
 
 
+
+
+
+  class Product {
+    constructor(namn, pris, lagersaldo) {
+
+        this.namn=namn;
+        this.pris=pris;
+        this.pris=lagersaldo;
+    }
+  }
+
+
+
   function readFromDb() {
 
     db.collection("products").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             console.log(doc.data());
+            var addProduct = new Product(doc.data().namn, doc.data().pris, doc.data().lagersaldo);
+
+            
         });
     });
 
   }
-
-
-  readFromDb();
 
